@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"%3E%3Crect width="64" height="64" rx="16" fill="%230a0806"/%3E%3Cellipse cx="21" cy="34" rx="12" ry="10" fill="none" stroke="%23d9ac47" stroke-width="3"/%3E%3Cellipse cx="43" cy="34" rx="12" ry="10" fill="none" stroke="%23f6e3a1" stroke-width="3"/%3E%3Cpath d="M31 31q2-4 4 0" fill="none" stroke="%23d9ac47" stroke-width="3"/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:;">
 <style>
 /* ============================================================
@@ -29,7 +29,7 @@
   --gold-glow:rgba(217,172,71,.22);
 
   --cream:#f3ead6;
-  --dim:rgba(243,234,214,.78);
+  --dim:rgba(243,234,214,.68);
   --faint:rgba(243,234,214,.44);
 
   --glass-brd:rgba(255,255,255,.13);
@@ -56,8 +56,8 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px);}
 body{
   background:var(--bg);
   color:var(--cream);
-  font-family:'Raleway',system-ui,sans-serif;
-  font-weight:400;
+  font-family:'Jost',system-ui,sans-serif;
+  font-weight:300;
   line-height:1.6;
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
@@ -74,12 +74,8 @@ h1,h2,h3,.serif{font-family:'Playfair Display',Georgia,serif;}
 .wrap{width:min(var(--content),100% - (var(--gutter)*2));margin-inline:auto;}
 
 .gold-text{
-  color:var(--gold-2);
   background:linear-gradient(120deg,var(--gold-1) 0%,var(--gold-2) 48%,var(--gold-3) 100%);
-  -webkit-background-clip:text;background-clip:text;
-}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .gold-text{color:transparent;}
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 
 /* ---------- liquid glass core ---------- */
@@ -616,66 +612,6 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
   .hero{padding-top:calc(var(--nav-h) + 20px);}
   .hero-copy{margin-top:16px;font-size:15px;}
   .hero-cta{margin-top:22px;}
-}
-
-/* ---------- Auditoria: mobile menu (drawer) ---------- */
-.nav-burger{display:flex;flex-direction:column;gap:5px;padding:12px 10px;border-radius:14px;cursor:pointer;}
-.nav-burger span{width:22px;height:2px;border-radius:2px;background:var(--gold-1);transition:transform .3s var(--ease),opacity .3s;}
-.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
-.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media (min-width:960px){.nav-burger{display:none;}}
-.drawer{position:fixed;inset:0;z-index:55;display:none;}
-.drawer.open{display:block;}
-.drawer::before{content:'';position:absolute;inset:0;background:rgba(5,4,2,.6);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
-.drawer-inner{position:relative;margin:86px auto 0;width:min(480px,calc(100% - 32px));
-  display:flex;flex-direction:column;padding:14px;border-radius:var(--r-lg);}
-.drawer-inner a{padding:16px 20px;border-radius:var(--r-sm);font-size:16px;font-weight:500;color:var(--cream);}
-.drawer-inner a:hover{background:rgba(217,172,71,.10);color:var(--gold-1);}
-body.lock{overflow:hidden;}
-
-/* ---------- Auditoria: formulário com labels ---------- */
-.lead-form .fld{display:flex;flex-direction:column;gap:7px;text-align:left;flex:1 1 240px;max-width:340px;}
-.lead-form .fld span{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);padding-left:8px;}
-.lead-form input,.lead-form select{width:100%;max-width:none;}
-.wa-fallback{margin-top:16px;font-size:14px;color:var(--dim);}
-.wa-fallback a{color:var(--gold-1);text-decoration:underline;}
-.link-plain{display:inline-flex;align-items:center;gap:8px;margin-top:20px;
-  font-size:14.5px;font-weight:500;color:var(--gold-1);text-decoration:underline;text-underline-offset:4px;}
-.link-plain:hover{color:var(--cream);}
-
-/* ---------- Auditoria: regras 1+1 ---------- */
-.rules{list-style:none;margin:20px auto 0;max-width:560px;display:flex;flex-direction:column;gap:8px;text-align:left;}
-.rules li{display:flex;gap:10px;font-size:13px;color:var(--dim);line-height:1.55;}
-.rules li::before{content:'✦';color:var(--gold-2);flex:0 0 auto;}
-
-/* ---------- Auditoria: cards c/ próximo passo ---------- */
-.card-cta{margin-top:14px;display:inline-flex;align-items:center;gap:6px;
-  font-size:13px;font-weight:600;color:var(--gold-1);cursor:pointer;
-  background:none;border:none;padding:0;transition:gap .25s var(--ease),color .25s;}
-.card-cta:hover{gap:10px;color:var(--cream);}
-
-/* ---------- Auditoria: Dutra "em breve" ---------- */
-.city-soon{margin-top:20px;border-radius:var(--r-md);border:1px dashed var(--gold-line);
-  background:rgba(217,172,71,.05);padding:26px 20px;text-align:center;
-  display:flex;flex-direction:column;align-items:center;gap:10px;}
-.city-soon svg{width:26px;height:26px;}
-.city-soon p{font-size:13.5px;color:var(--dim);line-height:1.6;max-width:34ch;}
-
-/* ---------- Auditoria: countdown chip ---------- */
-.count-chip{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
-  font-size:13.5px;font-weight:600;letter-spacing:.08em;color:var(--gold-1);
-  padding:11px 22px;border-radius:var(--r-pill);
-  background:rgba(217,172,71,.10);border:1px solid var(--gold-line);}
-
-/* ---------- Auditoria: refinamentos ---------- */
-.city-map:hover iframe,.city-map:focus-within iframe{filter:none;opacity:1;}
-.btn-gold:focus-visible{outline:3px solid var(--cream);outline-offset:3px;}
-.foot-tag2{font-size:12.5px;color:var(--faint);margin-top:4px;letter-spacing:.06em;}
-@media (hover:none){.marquee-track{animation-duration:48s;}}
-@media (max-width:700px) and (hover:none){
-  .glass{-webkit-backdrop-filter:blur(10px) saturate(130%);backdrop-filter:blur(10px) saturate(130%);}
 }
 
 .mini{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:90px 0;}
