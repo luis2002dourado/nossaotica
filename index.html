@@ -625,6 +625,14 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
   .hero-cta{margin-top:22px;}
 }
 
+/* ---------- Data da inauguração ---------- */
+.count-chip{display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+  font-size:13.5px;font-weight:600;letter-spacing:.08em;color:var(--gold-1);
+  padding:11px 22px;border-radius:var(--r-pill);
+  background:rgba(217,172,71,.10);border:1px solid var(--gold-line);}
+.date-line{margin-top:16px;font-size:14px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--gold-1);}
+
 </style>
 </head>
 <body>
@@ -689,6 +697,7 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
             Seguir no Instagram
           </a>
         </div>
+        <p class="count-chip" id="countChip" hidden></p>
       </div>
 
       <div class="hero-visual reveal in" data-delay="1">
@@ -767,6 +776,7 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
           <svg viewBox="0 0 100 60" fill="none"><ellipse cx="25" cy="30" rx="22" ry="18" stroke="#f6e3a1" stroke-width="4"/><ellipse cx="75" cy="30" rx="22" ry="18" stroke="#f6e3a1" stroke-width="4"/><path d="M47 27 Q50 22 53 27" stroke="#f6e3a1" stroke-width="4" fill="none"/></svg>
         </div>
         <h3 class="promo-title">Compre 1 armação,<br>leve outra <em class="gold-text">de graça</em></h3>
+        <p class="date-line">📅 14 de setembro de 2026 · Tuntum – MA</p>
         <p class="promo-fine">Válida somente no dia da inauguração de cada unidade, enquanto durarem os estoques.</p>
         <button class="btn btn-gold" data-wa="promo">Garantir minha vaga na promoção</button>
       </div>
@@ -943,6 +953,7 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
           </div>
           <h3>Tuntum – MA</h3>
           <p>Rua São Raimundo, 561 — Centro.<br>A casa que abre as portas da nossa história.</p>
+          <p class="date-line" style="margin-top:12px;letter-spacing:.06em;text-transform:none;">🗓️ Inauguração: 14 de setembro de 2026</p>
           <div class="city-map">
             <iframe title="Mapa — Nossa Ótica Tuntum" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
               src="https://www.google.com/maps?q=Rua%20S%C3%A3o%20Raimundo%2C%20561%20-%20Centro%2C%20Tuntum%20-%20MA&amp;output=embed"></iframe>
@@ -983,7 +994,7 @@ footer{border-top:1px solid var(--gold-line);padding:clamp(48px,6vw,72px) 0 120p
       <div class="faq">
         <details class="faq-item glass reveal">
           <summary>Quando será a inauguração? <span class="plus">+</span></summary>
-          <p class="answer">A data será anunciada primeiro no nosso Instagram e na lista prioritária do WhatsApp. Entre na lista para saber antes de todo mundo.</p>
+          <p class="answer">Tuntum inaugura em <strong style="color:var(--gold-1);font-weight:600;">14 de setembro de 2026</strong>! Presidente Dutra vem em seguida — entre na lista para saber a data em primeira mão.</p>
         </details>
         <details class="faq-item glass reveal">
           <summary>Como funciona a promoção “compre 1, leve outra grátis”? <span class="plus">+</span></summary>
@@ -1152,6 +1163,23 @@ if (GA_ID) {
   window.gtag("js", new Date());
   window.gtag("config", GA_ID, { anonymize_ip: true });
 }
+
+/* ---------- Countdown da inauguração (Tuntum) ---------- */
+const DATA_TUNTUM = "2026-09-14";
+(function () {
+  const chip = document.getElementById("countChip");
+  if (!chip) return;
+  const alvo = new Date(DATA_TUNTUM + "T09:00:00-03:00");
+  const tick = () => {
+    const d = Math.ceil((alvo - new Date()) / 86400000);
+    if (d > 1)  chip.textContent = "✨ Faltam " + d + " dias · Tuntum, 14 de setembro de 2026";
+    if (d === 1) chip.textContent = "✨ É amanhã! Tuntum, 14 de setembro de 2026";
+    if (d === 0) chip.textContent = "🎉 É hoje! Inauguração em Tuntum — venha fazer parte desse novo olhar!";
+    if (d < 0)  chip.textContent = "🎉 Tuntum inaugurada! Presidente Dutra, aguardem a sua vez.";
+    chip.hidden = false;
+  };
+  tick(); setInterval(tick, 60000);
+})();
 
 </script>
 
